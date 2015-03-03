@@ -42,6 +42,10 @@ config()
 		if [ -f /etc/mqm/config.mqsc ]; then
 			runmqsc ${MQ_QMGR_NAME} < /etc/mqm/config.mqsc
 		fi
+		if [ -f /etc/mqm/config.sh ]; then
+			/etc/mqm/config.sh ${MQ_QMGR_NAME}
+		fi
+		setmqaut -m ${MQ_QMGR_NAME} -t channel -n SYSTEM.ADMIN.SVRCONN -p mqm +all'
 	fi
 	echo "----------------------------------------"
 }
